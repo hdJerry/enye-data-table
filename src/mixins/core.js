@@ -27,7 +27,12 @@ export default {
                     res.UserName.match(new RegExp(this.search, 'i'));
                     return data;
 
-                }).slice(start, end);
+                });
+                if(result.length > this.size) {
+                    result = result.slice(start, end);
+                } else {
+                    this.currentPage = 0;
+                }
                 return result;
           },
      },
