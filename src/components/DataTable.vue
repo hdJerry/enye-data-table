@@ -8,36 +8,39 @@
             <i class="fa fa-chevron-right fa-sm"></i>
           </button>
     </div>
-    <table>
-        <thead>
-         <tr>
-             <th scope="col">S/N</th>
-            <th v-for="(colname, index) in col" :key="index">{{colname}}</th>
-        </tr>
-        </thead>
-        <transition-group
-            name="staggered-fade"
-            tag="tbody"
-            :css="false"
-            @before-enter="beforeEnter"
-            @enter="enter"
-            @leave="leave"
-            >
-       
-        <tr v-for="(data, index) in datas" :key="data.UserName" :data-index="index">
-             <td scope="row">{{ (currentPage * size) + index + 1 }}</td>
-            <td>{{data.FirstName}}</td>
-            <td>{{data.LastName}}</td>
-            <td>{{data.Gender}}</td>
-            <td>{{data.Email}}</td>
-            <td>{{data.PhoneNumber}}</td>
-            <td>{{data.UserName}}</td>
-            <td> <a :href="data.URL">{{data.URL}}</a></td>
-            <td>{{data.CreditCardType}}</td>
-            <td>{{data.PaymentMethod}}</td>
-        </tr>
-        </transition-group>
-    </table>
+    <div class="table-responsive">
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">S/N</th>
+                <th v-for="(colname, index) in col" :key="index">{{colname}}</th>
+            </tr>
+            </thead>
+            <transition-group
+                name="staggered-fade"
+                tag="tbody"
+                :css="false"
+                @before-enter="beforeEnter"
+                @enter="enter"
+                @leave="leave"
+                >
+        
+            <tr v-for="(data, index) in datas" :key="data.UserName" :data-index="index">
+                <td scope="row">{{ (currentPage * size) + index + 1 }}</td>
+                <td>{{data.FirstName}}</td>
+                <td>{{data.LastName}}</td>
+                <td>{{data.Gender}}</td>
+                <td>{{data.Email}}</td>
+                <td>{{data.PhoneNumber}}</td>
+                <td>{{data.UserName}}</td>
+                <td> <a :href="data.URL">{{data.URL}}</a></td>
+                <td>{{data.CreditCardType}}</td>
+                <td>{{data.PaymentMethod}}</td>
+            </tr>
+            </transition-group>
+        </table>
+
+    </div>
     <div class="pagination">
         <button class="prev" @click.prevent="prevPage()" :disabled="currentPage === 0">
             <i class="fa fa-chevron-left fa-sm"></i>
@@ -100,6 +103,11 @@ export default {
 </script>
 
 <style scoped>
+
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+}
 
 .pagination {
     margin: 20px;
@@ -170,17 +178,15 @@ tr:hover {
     color: #fff;
 }
 
-
+/* 
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
-	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
 		display: block; 
 	}
 	
-	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
 		position: absolute;
 		top: -9999px;
@@ -190,7 +196,6 @@ only screen and (max-width: 760px),
 	tr { border: 1px solid #ccc; }
 	
 	td { 
-		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
 		position: relative;
@@ -198,9 +203,7 @@ only screen and (max-width: 760px),
 	}
 	
 	td:before { 
-		/* Now like a table header */
 		position: absolute;
-		/* Top/left values mimic padding */
 		top: 6px;
 		left: 6px;
 		width: 45%; 
@@ -208,27 +211,15 @@ only screen and (max-width: 760px),
 		white-space: nowrap;
 	}
 	
-	/*
-	Label the data
-    FirstName
-LastName
-Gender
-Email
-PhoneNumber
-URL
-UserName
-CreditCardType
-PaymentMethod
-}
-	*/
-	td:nth-of-type(1):before { content: "First Name"; }
-	td:nth-of-type(2):before { content: "Last Name"; }
-	td:nth-of-type(3):before { content: "Gender"; }
-	td:nth-of-type(4):before { content: "Email"; }
-	td:nth-of-type(5):before { content: "Phone Number"; }
-	td:nth-of-type(6):before { content: "URL"; }
-	td:nth-of-type(7):before { content: "UserName"; }
-	td:nth-of-type(8):before { content: "Credit Card Type"; }
-	td:nth-of-type(9):before { content: "Payment Method"; }
-}
+	td:nth-of-type(1):before { content: "S/N"; }
+	td:nth-of-type(2):before { content: "First Name"; }
+	td:nth-of-type(3):before { content: "Last Name"; }
+	td:nth-of-type(4):before { content: "Gender"; }
+	td:nth-of-type(5):before { content: "Email"; }
+	td:nth-of-type(6):before { content: "Phone Number"; }
+	td:nth-of-type(7):before { content: "URL"; }
+	td:nth-of-type(8):before { content: "UserName"; }
+	td:nth-of-type(9):before { content: "Credit Card Type"; }
+	td:nth-of-type(10):before { content: "Payment Method"; }
+} */
 </style>
