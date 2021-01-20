@@ -55,7 +55,7 @@ export default {
             { opacity: 1, height: '1.6em' },
             { complete: done }
             )
-        }, delay)
+        }, 200)
         },
         leave(el, done) {
         var delay = el.dataset.index * 150
@@ -65,7 +65,7 @@ export default {
             { opacity: 0, height: 0 },
             { complete: done }
             )
-        }, delay)
+        }, 200)
         }
 
      }
